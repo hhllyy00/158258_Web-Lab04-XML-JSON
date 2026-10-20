@@ -2,12 +2,12 @@
 <catalogue>
   <book id = "0001">
     <title>Save</title>
-    <author>Shi tie sheng</author>
+    <author>Shi Tiesheng</author>
     <price>69</price>
    </book>
 
   <book id = "0002">
-    <title>Tody</title>
+    <title>Today</title>
     <author>Li Ming</author>
     <price>40</price>
    </book>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserProfiles</title>
+</head>
+
+<body>
+    <h1>User Profiles</h1>
+    <div id="profileList"></div> <!-- Container where all profiles will be rendered -->
+
+    <script>
+        fetch('userProfiles.json')                  // 1. Request the JSON file; fetch returns a Promise
+            .then(response => {
+                if (!response.ok) {                 // 2. A 404/500 still resolves, so check the status manually
+                    throw new Error('HTTP error: ' + response.status);
+                }
+                return response.json();             // 3. Parse the response body directly into a JS object
+            })
+            .then(data => {                         // 4. data is the whole outer object { userProfiles: [...] }
+                let html = '';                      // 5. Accumulate one HTML block per profile
+                data.userProfiles.forEach(profile => {
+                    // Ternary operator: show booleans as on/off instead of true/false
+                    let notifications = profile.preferences.notifications ? 'on' : 'off';
+                    let subscription = profile.preferences.subscription ? 'on' : 'off';
+                    let name = profile.firstName + ' ' + profile.lastName;
+
+                    html += `<div>
+                        <h2>${name}</h2> 
+                        <p>Email: ${profile.email}</p> 
+                        <p>Born: ${profile.dateOfBirth}</p> 
+                        <p>Theme: ${profile.preferences.theme}</p>
+                        <p>Language: ${profile.preferences.language}</p>
+                        <p>Notifications: ${notifications}</p>
+                        <p>Subscription: ${subscription}</p>
+                        <p>Address: ${profile.address.street}, ${profile.address.city}, ${profile.address.state} ${profile.address.zipCode}</p>
+                        </div>`;   // 6. Nested objects: access one level deeper (profile.address.city)
+                });
+                document.getElementById('profileList').innerHTML = html;  // 7. Render all at once
+            })
+            .catch(err => {
+                console.log('Error:', err);         // 8. Catch network or parsing errors
+            });
+    </script>
+</body>
+
+</html>

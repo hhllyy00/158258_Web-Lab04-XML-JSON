@@ -1,0 +1,58 @@
+{
+    "userProfiles": [
+        {
+            "firstName": "Zhang",
+            "lastName": "San",
+            "email": "2875152625@qq.com",
+            "dateOfBirth": "2001.1.1",
+            "preferences": {
+                "theme": "dark",
+                "language": "zh-CN",
+                "notifications": true,
+                "subscription": false
+            },
+            "address": {
+                "street": "Zhongguancun Street",
+                "city": "Beijing",
+                "state": "Beijing",
+                "zipCode": 100080
+            }
+        },
+        {
+            "firstName": "Li",
+            "lastName": "Si",
+            "email": "2875152626@qq.com",
+            "dateOfBirth": "2001.2.2",
+            "preferences": {
+                "theme": "dark",
+                "language": "en",
+                "notifications": false,
+                "subscription": false
+            },
+            "address": {
+                "street": "Nanjing Road",
+                "city": "Shanghai",
+                "state": "Shanghai",
+                "zipCode": 200001
+            }
+        },
+        {
+            "firstName": "Wang",
+            "lastName": "Wu",
+            "email": "2875152627@qq.com",
+            "dateOfBirth": "2001.3.3",
+            "preferences": {
+                "theme": "light",
+                "language": "zh-CN",
+                "notifications": false,
+                "subscription": true
+            },
+            "address": {
+                "street": "West Lake Avenue",
+                "city": "Hangzhou",
+                "state": "Zhejiang",
+                "zipCode": 310006
+            }
+        }
+    ]
+}

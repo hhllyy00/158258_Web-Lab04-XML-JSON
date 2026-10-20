@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalogue</title>
+</head>
+
+<body>
+    <h1>Book Catalogue</h1>
+    <div id="bookList"></div>
+
+    <script>
+        fetch('book.xml')   // Request book.xml from the server; fetch returns a Promise
+            .then((response) => {
+                if (!response.ok) {   // A 404/500 still counts as "fulfilled", so check status manually
+                    throw new Error('Fetch error ' + response.status);
+                }
+                return response.text();   // Read the response body as a plain text string
+            })
+            .then((xmlText) => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml'); // Parse the string into a queryable XML document object
+                const books = xmlDoc.querySelectorAll('book');  // Get all <book> elements
+                let html = '';  // Accumulate all rows first, then render once (faster than += per book)
+                books.forEach((book) => {
+                    let id = book.getAttribute('id');
+                    let title = book.querySelector('title').textContent;
+                    let author = book.querySelector('author').textContent;
+                    let price = book.querySelector('price').textContent;
+                    html += `<p>[${id}]  <strong>${title}</strong> --- ${author}, $${price}</p>`;
+                });
+                document.getElementById('bookList').innerHTML = html;  // Insert all books into the page in one go
+            })
+            .catch((err) => {
+                console.error('Error:', err);
+            });
+    </script>
+</body>
+
+</html>

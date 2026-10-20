@@ -1,0 +1,21 @@
+<?xml version = "1.0"?>
+<catalogue>
+  <book id = "0001">
+    <title>Save</title>
+    <author>Shi tie sheng</author>
+    <price>69</price>
+   </book>
+
+  <book id = "0002">
+    <title>Tody</title>
+    <author>Li Ming</author>
+    <price>40</price>
+   </book>
+
+   <book id = "0003">
+    <title>Hello World</title>
+    <author>Susan</author>
+    <price>51</price>
+   </book>
+</catalogue>
+
